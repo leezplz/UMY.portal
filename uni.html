@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Student Portal - Classic Mode</title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    /* Custom Tailwind Configuration */
+    tailwind.config= {
+      theme: {
+        extend: {
+          colors: {
+            'primary-dark': '#3730A3',
+              /* Dark Blue/Indigo for details (Keep this) */
+              'primary-light': '#E0E7FF',
+              /* Light Indigo for hover/accents (Keep this) */
+              'bg-main': '#FFFFF5',
+              /* Very subtle yellowish off-white */
+              'dark-bg-example': '#1a1a1a',
+              /* New dark background for example page */
+          }
+
+          ,
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+
+    /* Custom CSS for seamless height */
+    #app-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      /* Ensure vertical stacking for header + main */
+    }
+
+    /* Make main content grow to push footer to bottom */
+    main {
+      flex: 1;
+    }
+
+    /* Make footer thin and compact */
+    footer {
+      padding: 0.5rem 0;
+      font-size: 0.75rem;
+    }
+
+    /* Basic transition for smoother state changes */
+    .nav-link {
+      transition: all 0.2s ease-in-out;
+      /* Ensure nav links sit on the border baseline */
+      line-height: 1.5rem;
+    }
+
+    /* Responsive horizontal scroll for navigation on small screens */
+    #main-nav-links {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    #main-nav-links::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera */
+    }
+
+    /* Resetting rounding on key elements */
+    .classic-box {
+      border-radius: 0 !important;
+    }
+  </style>
+</head>
+
+<body class="bg-bg-main font-sans">
+
+  <!-- Overall Application Container -->
+  <div id="app-container">
+
+    <!-- Top Navigation Bar (Dark Blue Background) -->
+    <header id="top-navbar" class="bg-primary-dark sticky top-0 z-20 shadow" style="background-color: #3730A3;">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+
+          <!-- Branding / Logo -->
+          <div class="flex-shrink-0">
+            <!-- Branding text is now white -->
+            <h1 class="text-2xl font-extrabold text-white">UMY PORTAL</h1>
+            <p class="text-xs text-white/70 hidden sm:block">STUDENT DASHBOARD</p>
+          </div>
+
+          <!-- Navigation Links Container -->
+          <nav id="main-nav-links" class="flex items-center space-x-1 sm:space-x-4 h-full">
+            <!-- Links now default to white text --><a href="#" data-section="dashboard"
+              class="nav-link px-3 py-2 text-white font-bold active-link flex items-center border-b-4 border-white"
+              onclick="switchSection(this, 'dashboard')">
+              DASHBOARD
+            </a>
+            <a href="#" data-section="courses"
+              class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
+              onclick="switchSection(this, 'courses')">
+              MY COURSES
+            </a>
+            <a href="#" data-section="results"
+              class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
+              onclick="switchSection(this, 'results')">
+              STUDENT CENTER
+            </a>
+            <a href="#" data-section="schedule"
+              class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
+              onclick="switchSection(this, 'schedule')">
+              SCHEDULE
+            </a>
+            <a href="#" data-section="library"
+              class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
+              onclick="switchSection(this, 'library')">
+              LIBRARY
+            </a>
+          </nav>
+
+          <!-- User Profile / Right Side --><!-- Border and Text are now white, initials circle is white -->
+          <div class="ml-4 flex items-center border border-white/50 p-1 classic-box">
+            <div class="flex items-center space-x-3">
+              <div
+                class="h-6 w-6 bg-white classic-box flex items-center justify-center text-primary-dark font-bold text-xs">
+                JS</div>
+              <div class="hidden md:block">
+                <p class="text-sm font-semibold text-white">Jane Smith</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-6 md:p-10 bg-bg-main z-10 max-w-7xl mx-auto w-full">
+
+      <!-- Content Area Header -->
+      <header class="mb-8 pb-4 border-b border-primary-dark">
+        <h2 id="content-title" class="text-3xl font-extrabold text-gray-900 uppercase">Dashboard</h2>
+        <p class="text-sm text-gray-500 mt-1">WELCOME BACK, JANE. HERE'S A QUICK OVERVIEW.</p>
+      </header>
+
+      <!-- Section Content Containers -->
+      <div id="content-area">
+
+        <!-- 1. Dashboard Section -->
+        <section id="dashboard-section" class="content-section">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Card 1: Announcements -->
+            <div class="bg-primary-light/50 p-4 shadow border border-primary-dark/50 classic-box">
+              <h3 class="text-xl font-bold text-primary-dark mb-3 uppercase">Next Event</h3>
+              <p class="text-gray-700">REGISTRATION FOR SPRING SEMESTER OPENS ON **DEC 15**.</p>
+              <a href="#" class="text-sm text-primary-dark font-semibold mt-3 block hover:underline">VIEW DETAILS
+                &rarr;</a>
+            </div>
+
+            <!-- Card 2: Grades Overview -->
+            <div class="bg-white p-4 shadow border border-primary-dark/50 classic-box">
+              <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Overall GPA</h3>
+              <p class="text-4xl font-extrabold text-primary-dark">3.85</p>
+              <p class="text-sm text-gray-500 mt-1">EXCELLENT STANDING.</p>
+            </div>
+
+            <!-- Card 3: Upcoming Due Date -->
+            <div class="bg-white p-4 shadow border border-primary-dark/50 classic-box">
+              <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">To Do</h3>
+              <p class="text-gray-700 font-semibold">PROJECT 3 SUBMISSION</p>
+              <p class="text-sm text-red-600">DUE: NOV 20, 2025</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 2. Courses Section (Initially hidden) -->
+        <section id="courses-section" class="content-section hidden">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">Current
+            Enrollment</h3>
+          <ul class="space-y-4">
+            <li class="p-4 bg-white shadow border border-primary-dark/50 flex justify-between items-center classic-box">
+              <div>
+                <p class="font-semibold text-lg text-gray-900">CSC401 - ADVANCED ALGORITHMS</p>
+                <p class="text-sm text-gray-500">DR. ALAN TURING | TUESDAYS & THURSDAYS</p>
+              </div>
+              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">ACTIVE</span>
+            </li>
+            <li class="p-4 bg-white shadow border border-primary-dark/50 flex justify-between items-center classic-box">
+              <div>
+                <p class="font-semibold text-lg text-gray-900">PHY305 - QUANTUM MECHANICS I</p>
+                <p class="text-sm text-gray-500">PROF. MARIE CURIE | MONDAYS & WEDNESDAYS</p>
+              </div>
+              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">ACTIVE</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 3. Student Center Section (Results table still inside) -->
+        <section id="results-section" class="content-section hidden">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">
+            Matriculation / Diploma Result
+          </h3>
+
+          <!-- Centered loading container within the page content -->
+          <div class="flex items-center justify-center min-h-[60vh]">
+            <!-- Hidden clickable area that redirects to acceptance page -->
+            <a href="acceptance.html"
+              class="flex flex-col items-center cursor-default hover:opacity-80 transition-opacity">
+              <!-- YouTube-style loading spinner -->
+              <div class="relative w-16 h-16">
+                <div class="absolute inset-0 border-4 border-gray-300 rounded-full"></div>
+                <div
+                  class="absolute inset-0 border-4 border-primary-dark border-t-transparent rounded-full animate-spin">
+                </div>
+              </div>
+              <!-- Optional loading text -->
+              <p class="mt-4 text-sm font-medium text-gray-600">Loading...</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- 4. Schedule Section (Initially hidden) -->
+        <section id="schedule-section" class="content-section hidden">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Weekly Schedule Overview</h3>
+          <div class="bg-white p-6 shadow border border-primary-dark/50 classic-box">
+            <img src="https://placehold.co/800x400/E0E7FF/3730A3?text=PLACEHOLDER+FOR+WEEKLY+CALENDAR"
+              class="w-full classic-box" alt="Weekly Class Schedule Placeholder">
+          </div>
+        </section>
+
+        <!-- 5. Library Section (Initially hidden) -->
+        <section id="library-section" class="content-section hidden">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Library Services</h3>
+          <p class="text-gray-700">ACCESS MILLIONS OF DIGITAL RESOURCES AND BOOK STUDY ROOMS.</p>
+          <a href="https://example.com/library" target="_blank"
+            class="mt-4 inline-block px-4 py-2 bg-primary-dark text-white shadow hover:bg-indigo-800 transition duration-150 classic-box">GO
+            TO DIGITAL LIBRARY</a>
+        </section>
+
+        <!-- 6. Profile Section (Initially hidden) -->
+        <section id="profile-section" class="content-section hidden">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">My Profile</h3>
+          <div class="bg-white p-6 shadow border border-primary-dark/50 classic-box">
+            <p class="text-gray-700">STUDENT ID: 20241234</p>
+            <p class="text-gray-700 mt-2">MAJOR: COMPUTER SCIENCE</p>
+            <p class="text-gray-700 mt-2">ENROLLMENT STATUS: FULL-TIME</p>
+            <button
+              class="mt-4 px-4 py-2 border border-primary-dark text-primary-dark hover:bg-primary-light transition duration-150 classic-box">UPDATE
+              CONTACT INFO</button>
+          </div>
+        </section>
+
+        <!-- 7. NEW Example Page Section (Diploma Acceptance/Congratulations) -->
+        <section id="example-section" class="content-section hidden">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">
+            Matriculation / Diploma Result
+          </h3>
+
+          <!-- Congratulations/Acceptance Container -->
+          <div class="flex items-center justify-center min-h-[60vh]">
+            <div
+              class="bg-white border-4 border-green-600 shadow-2xl p-8 md:p-12 max-w-2xl w-full classic-box relative overflow-hidden">
+
+              <!-- Decorative corner elements -->
+              <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-primary-dark"></div>
+              <div class="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-primary-dark"></div>
+              <div class="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-primary-dark"></div>
+              <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-primary-dark"></div>
+
+              <!-- Success Badge -->
+              <div class="flex justify-center mb-6">
+                <div class="bg-green-600 text-white rounded-full p-4 shadow-lg">
+                  <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Main Congratulations Text -->
+              <div class="text-center mb-8">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-green-600 mb-4 uppercase">
+                  TAHNIAH!
+                </h2>
+                <p class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+                  LULUS
+                </p>
+                <div class="bg-primary-light/50 p-4 my-6 border-l-4 border-r-4 border-primary-dark">
+                  <p class="text-xl md:text-2xl font-semibold text-primary-dark">
+                    Diploma Kejuruteraan Automobil
+                  </p>
+                </div>
+              </div>
+
+              <!-- Student Details -->
+              <div class="bg-gray-50 p-6 mb-6 border border-gray-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p class="text-gray-600 uppercase font-semibold">Student Name:</p>
+                    <p class="text-gray-900 font-bold">JANE SMITH</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-600 uppercase font-semibold">Student ID:</p>
+                    <p class="text-gray-900 font-bold">20241234</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-600 uppercase font-semibold">CGPA:</p>
+                    <p class="text-green-700 font-bold text-lg">3.85</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-600 uppercase font-semibold">Date:</p>
+                    <p class="text-gray-900 font-bold">7 NOVEMBER 2025</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Congratulatory Message -->
+              <div class="text-center mb-6">
+                <p class="text-gray-700 text-base leading-relaxed">
+                  Anda telah berjaya menamatkan pengajian dan memenuhi semua syarat yang ditetapkan untuk
+                  <span class="font-bold text-primary-dark">Diploma Kejuruteraan Automobil</span>.
+                  Keputusan rasmi dan sijil akan dikeluarkan tidak lama lagi.
+                </p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <button
+                  class="px-6 py-3 bg-primary-dark text-white font-bold hover:bg-indigo-800 transition duration-150 shadow-lg classic-box uppercase">
+                  Download Transcript
+                </button>
+                <button
+                  class="px-6 py-3 border-2 border-primary-dark text-primary-dark font-bold hover:bg-primary-light transition duration-150 classic-box uppercase">
+                  View Full Results
+                </button>
+              </div>
+
+              <!-- Celebratory accent -->
+              <div class="text-center mt-8 text-6xl opacity-20">
+                🎓 🎉 ⭐
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+      </div>
+
+    </main>
+
+    <!-- Footer - now outside main to stick to bottom -->
+    <footer class="border-t-2 border-primary-dark text-center text-gray-500 classic-box uppercase bg-bg-main">
+      &copy; 2025 UNIVERSITY PORTAL. ALL RIGHTS RESERVED.
+    </footer>
+  </div>
+
+  <script>
+    // --- JavaScript for Single-Page Navigation ---
+
+    /**
+     * Switches the main content section and updates the top navbar active link.
+     * @param {HTMLElement} linkElement - The clicked navbar link element.
+     * @param {string} sectionId - The ID prefix of the section to display (e.g., 'dashboard').
+     */
+    function switchSection(linkElement, sectionId) {
+
+      // 1. Update active link in navbar
+      document.querySelectorAll('.nav-link').forEach(link => {
+        // Remove all active styles (border-bottom, bold text)
+        link.classList.remove('border-b-4', 'border-white', 'font-bold');
+        // Ensure inactive links have default color and hover effects
+        link.classList.add('text-white/90', 'hover:border-b-4', 'hover:border-white/50');
+        link.classList.remove('text-white'); // Remove explicit active text color
+      });
+
+      // Apply active styling: white border-bottom and bold white text
+      linkElement.classList.add('border-b-4', 'border-white', 'font-bold', 'text-white');
+      linkElement.classList.remove('text-white/90', 'hover:border-b-4', 'hover:border-white/50');
+
+
+      // 2. Update main content display
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+
+      const targetSection = document.getElementById(`${sectionId}-section`);
+      if (targetSection) {
+        targetSection.classList.remove('hidden');
+
+        // 3. Update Header Title based on the active link text
+        const titleElement = document.getElementById('content-title');
+        const linkText = linkElement.textContent.trim();
+        titleElement.textContent = linkText.toUpperCase();
+      }
+
+      // Prevent default link behavior
+      event.preventDefault();
+    }
+
+    // Initialize the app on load to ensure the correct title is set for the active section
+    window.onload = function () {
+      const activeLink = document.querySelector('.active-link');
+      if (activeLink) {
+        const sectionId = activeLink.getAttribute('data-section');
+        switchSection(activeLink, sectionId);
+      }
+    };
+
+  </script>
+</body>
+
+</html>
