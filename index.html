@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>University Student Portal - Classic Mode</title>
+  <title>Universiti Malaya Yakin Student Portal</title>
   <!-- Load Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -92,36 +92,36 @@
           <!-- Branding / Logo -->
           <div class="flex-shrink-0">
             <!-- Branding text is now white -->
-            <h1 class="text-2xl font-extrabold text-white">UMY PORTAL</h1>
-            <p class="text-xs text-white/70 hidden sm:block">STUDENT DASHBOARD</p>
+            <h1 class="text-2xl font-extrabold text-white">PORTAL UMY</h1>
+            <p class="text-xs text-white/70 hidden sm:block">PAPAN PEMUKA PELAJAR</p>
           </div>
 
           <!-- Navigation Links Container -->
           <nav id="main-nav-links" class="flex items-center space-x-1 sm:space-x-4 h-full">
             <!-- Links now default to white text --><a href="#" data-section="dashboard"
-              class="nav-link px-3 py-2 text-white font-bold active-link flex items-center border-b-4 border-white"
+              class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
               onclick="switchSection(this, 'dashboard')">
-              DASHBOARD
+              HOME
             </a>
             <a href="#" data-section="courses"
               class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
               onclick="switchSection(this, 'courses')">
-              MY COURSES
+              KURSUS
             </a>
             <a href="#" data-section="results"
-              class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
+              class="nav-link px-3 py-2 text-white font-bold active-link flex items-center border-b-4 border-white"
               onclick="switchSection(this, 'results')">
-              STUDENT CENTER
+              PUSAT PELAJAR
             </a>
             <a href="#" data-section="schedule"
               class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
               onclick="switchSection(this, 'schedule')">
-              SCHEDULE
+              JADUAL
             </a>
             <a href="#" data-section="library"
               class="nav-link px-3 py-2 text-white/90 hover:border-b-4 hover:border-white/50 flex items-center"
               onclick="switchSection(this, 'library')">
-              LIBRARY
+              PERPUSTAKAAN
             </a>
           </nav>
 
@@ -130,9 +130,9 @@
             <div class="flex items-center space-x-3">
               <div
                 class="h-6 w-6 bg-white classic-box flex items-center justify-center text-primary-dark font-bold text-xs">
-                JS</div>
+                RP</div>
               <div class="hidden md:block">
-                <p class="text-sm font-semibold text-white">Jane Smith</p>
+                <p class="text-sm font-semibold text-white">Rajvelan A/L Pavan</p>
               </div>
             </div>
           </div>
@@ -146,37 +146,37 @@
 
       <!-- Content Area Header -->
       <header class="mb-8 pb-4 border-b border-primary-dark">
-        <h2 id="content-title" class="text-3xl font-extrabold text-gray-900 uppercase">Dashboard</h2>
-        <p class="text-sm text-gray-500 mt-1">WELCOME BACK, JANE. HERE'S A QUICK OVERVIEW.</p>
+        <h2 id="content-title" class="text-3xl font-extrabold text-gray-900 uppercase">Pusat Pelajar</h2>
+        <p class="text-sm text-gray-500 mt-1">SELAMAT KEMBALI, Rajvelan A/L Pavan.</p>
       </header>
 
       <!-- Section Content Containers -->
       <div id="content-area">
 
         <!-- 1. Dashboard Section -->
-        <section id="dashboard-section" class="content-section">
+        <section id="dashboard-section" class="content-section hidden">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <!-- Card 1: Announcements -->
             <div class="bg-primary-light/50 p-4 shadow border border-primary-dark/50 classic-box">
-              <h3 class="text-xl font-bold text-primary-dark mb-3 uppercase">Next Event</h3>
-              <p class="text-gray-700">REGISTRATION FOR SPRING SEMESTER OPENS ON **DEC 15**.</p>
-              <a href="#" class="text-sm text-primary-dark font-semibold mt-3 block hover:underline">VIEW DETAILS
+              <h3 class="text-xl font-bold text-primary-dark mb-3 uppercase">Acara Seterusnya</h3>
+              <p class="text-gray-700">PENDAFTARAN UNTUK SEMESTER MUSIM BUNGA DIBUKA PADA **15 DIS**.</p>
+              <a href="#" class="text-sm text-primary-dark font-semibold mt-3 block hover:underline">LIHAT BUTIRAN
                 &rarr;</a>
             </div>
 
             <!-- Card 2: Grades Overview -->
             <div class="bg-white p-4 shadow border border-primary-dark/50 classic-box">
-              <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Overall GPA</h3>
+              <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">PNGK Keseluruhan</h3>
               <p class="text-4xl font-extrabold text-primary-dark">3.85</p>
-              <p class="text-sm text-gray-500 mt-1">EXCELLENT STANDING.</p>
+              <p class="text-sm text-gray-500 mt-1">KEDUDUKAN CEMERLANG.</p>
             </div>
 
             <!-- Card 3: Upcoming Due Date -->
             <div class="bg-white p-4 shadow border border-primary-dark/50 classic-box">
-              <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">To Do</h3>
-              <p class="text-gray-700 font-semibold">PROJECT 3 SUBMISSION</p>
-              <p class="text-sm text-red-600">DUE: NOV 20, 2025</p>
+              <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Tugasan</h3>
+              <p class="text-gray-700 font-semibold">PENYERAHAN PROJEK 3</p>
+              <p class="text-sm text-red-600">TARIKH AKHIR: 20 NOV 2025</p>
             </div>
 
           </div>
@@ -184,37 +184,35 @@
 
         <!-- 2. Courses Section (Initially hidden) -->
         <section id="courses-section" class="content-section hidden">
-          <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">Current
-            Enrollment</h3>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">Pendaftaran
+            Semasa</h3>
           <ul class="space-y-4">
             <li class="p-4 bg-white shadow border border-primary-dark/50 flex justify-between items-center classic-box">
               <div>
-                <p class="font-semibold text-lg text-gray-900">CSC401 - ADVANCED ALGORITHMS</p>
-                <p class="text-sm text-gray-500">DR. ALAN TURING | TUESDAYS & THURSDAYS</p>
+                <p class="font-semibold text-lg text-gray-900">CSC401 - ALGORITMA LANJUTAN</p>
+                <p class="text-sm text-gray-500">DR. ALAN TURING | SELASA & KHAMIS</p>
               </div>
-              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">ACTIVE</span>
+              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">AKTIF</span>
             </li>
             <li class="p-4 bg-white shadow border border-primary-dark/50 flex justify-between items-center classic-box">
               <div>
-                <p class="font-semibold text-lg text-gray-900">PHY305 - QUANTUM MECHANICS I</p>
-                <p class="text-sm text-gray-500">PROF. MARIE CURIE | MONDAYS & WEDNESDAYS</p>
+                <p class="font-semibold text-lg text-gray-900">PHY305 - MEKANIK KUANTUM I</p>
+                <p class="text-sm text-gray-500">PROF. MARIE CURIE | ISNIN & RABU</p>
               </div>
-              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">ACTIVE</span>
+              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">AKTIF</span>
             </li>
           </ul>
         </section>
 
         <!-- 3. Student Center Section (Results table still inside) -->
-        <section id="results-section" class="content-section hidden">
+        <section id="results-section" class="content-section">
           <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">
-            Matriculation / Diploma Result
+            Keputusan Diploma
           </h3>
 
           <!-- Centered loading container within the page content -->
           <div class="flex items-center justify-center min-h-[60vh]">
-            <!-- Hidden clickable area that redirects to acceptance page -->
-            <a href="acceptance.html"
-              class="flex flex-col items-center cursor-default hover:opacity-80 transition-opacity">
+            <div class="flex flex-col items-center">
               <!-- YouTube-style loading spinner -->
               <div class="relative w-16 h-16">
                 <div class="absolute inset-0 border-4 border-gray-300 rounded-full"></div>
@@ -223,46 +221,46 @@
                 </div>
               </div>
               <!-- Optional loading text -->
-              <p class="mt-4 text-sm font-medium text-gray-600">Loading...</p>
-            </a>
+              <p class="mt-4 text-sm font-medium text-gray-600">Tunggu Sebentar...</p>
+            </div>
           </div>
         </section>
 
         <!-- 4. Schedule Section (Initially hidden) -->
         <section id="schedule-section" class="content-section hidden">
-          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Weekly Schedule Overview</h3>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Ringkasan Jadual Mingguan</h3>
           <div class="bg-white p-6 shadow border border-primary-dark/50 classic-box">
-            <img src="https://placehold.co/800x400/E0E7FF/3730A3?text=PLACEHOLDER+FOR+WEEKLY+CALENDAR"
-              class="w-full classic-box" alt="Weekly Class Schedule Placeholder">
+            <img src="https://placehold.co/800x400/E0E7FF/3730A3?text=PEMEGANG+TEMPAT+UNTUK+KALENDAR+MINGGUAN"
+              class="w-full classic-box" alt="Pemegang Tempat Jadual Kelas Mingguan">
           </div>
         </section>
 
         <!-- 5. Library Section (Initially hidden) -->
         <section id="library-section" class="content-section hidden">
-          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Library Services</h3>
-          <p class="text-gray-700">ACCESS MILLIONS OF DIGITAL RESOURCES AND BOOK STUDY ROOMS.</p>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Perkhidmatan Perpustakaan</h3>
+          <p class="text-gray-700">AKSES BERJUTA SUMBER DIGITAL DAN TEMPAH BILIK KAJIAN.</p>
           <a href="https://example.com/library" target="_blank"
-            class="mt-4 inline-block px-4 py-2 bg-primary-dark text-white shadow hover:bg-indigo-800 transition duration-150 classic-box">GO
-            TO DIGITAL LIBRARY</a>
+            class="mt-4 inline-block px-6 py-3 bg-primary-dark text-white font-bold hover:bg-indigo-800 transition duration-150 classic-box uppercase"
+            style="background-color: #3730A3;">KE PERPUSTAKAAN DIGITAL</a>
         </section>
 
         <!-- 6. Profile Section (Initially hidden) -->
         <section id="profile-section" class="content-section hidden">
-          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">My Profile</h3>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Profil Saya</h3>
           <div class="bg-white p-6 shadow border border-primary-dark/50 classic-box">
-            <p class="text-gray-700">STUDENT ID: 20241234</p>
-            <p class="text-gray-700 mt-2">MAJOR: COMPUTER SCIENCE</p>
-            <p class="text-gray-700 mt-2">ENROLLMENT STATUS: FULL-TIME</p>
+            <p class="text-gray-700">ID PELAJAR: 20241234</p>
+            <p class="text-gray-700 mt-2">JURUSAN: SAINS KOMPUTER</p>
+            <p class="text-gray-700 mt-2">STATUS PENDAFTARAN: SEPENUH MASA</p>
             <button
-              class="mt-4 px-4 py-2 border border-primary-dark text-primary-dark hover:bg-primary-light transition duration-150 classic-box">UPDATE
-              CONTACT INFO</button>
+              class="mt-4 px-4 py-2 border border-primary-dark text-primary-dark hover:bg-primary-light transition duration-150 classic-box">KEMASKINI
+              MAKLUMAT HUBUNGAN</button>
           </div>
         </section>
 
         <!-- 7. NEW Example Page Section (Diploma Acceptance/Congratulations) -->
         <section id="example-section" class="content-section hidden">
           <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">
-            Matriculation / Diploma Result
+            Keputusan Diploma
           </h3>
 
           <!-- Congratulations/Acceptance Container -->
@@ -305,19 +303,19 @@
               <div class="bg-gray-50 p-6 mb-6 border border-gray-300">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p class="text-gray-600 uppercase font-semibold">Student Name:</p>
-                    <p class="text-gray-900 font-bold">JANE SMITH</p>
+                    <p class="text-gray-600 uppercase font-semibold">Nama Pelajar:</p>
+                    <p class="text-gray-900 font-bold">RAJVELAN A/L PAVAN</p>
                   </div>
                   <div>
-                    <p class="text-gray-600 uppercase font-semibold">Student ID:</p>
+                    <p class="text-gray-600 uppercase font-semibold">ID Pelajar:</p>
                     <p class="text-gray-900 font-bold">20241234</p>
                   </div>
                   <div>
-                    <p class="text-gray-600 uppercase font-semibold">CGPA:</p>
+                    <p class="text-gray-600 uppercase font-semibold">PNGK:</p>
                     <p class="text-green-700 font-bold text-lg">3.85</p>
                   </div>
                   <div>
-                    <p class="text-gray-600 uppercase font-semibold">Date:</p>
+                    <p class="text-gray-600 uppercase font-semibold">Tarikh:</p>
                     <p class="text-gray-900 font-bold">7 NOVEMBER 2025</p>
                   </div>
                 </div>
@@ -336,11 +334,11 @@
               <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <button
                   class="px-6 py-3 bg-primary-dark text-white font-bold hover:bg-indigo-800 transition duration-150 shadow-lg classic-box uppercase">
-                  Download Transcript
+                  Muat Turun Transkrip
                 </button>
                 <button
                   class="px-6 py-3 border-2 border-primary-dark text-primary-dark font-bold hover:bg-primary-light transition duration-150 classic-box uppercase">
-                  View Full Results
+                  Lihat Keputusan Penuh
                 </button>
               </div>
 
@@ -359,7 +357,7 @@
 
     <!-- Footer - now outside main to stick to bottom -->
     <footer class="border-t-2 border-primary-dark text-center text-gray-500 classic-box uppercase bg-bg-main">
-      &copy; 2025 UNIVERSITY PORTAL. ALL RIGHTS RESERVED.
+      &copy; 2025 PORTAL UNIVERSITI MALAYA YAKIN. HAKCIPTA TERPELIHARA.
     </footer>
   </div>
 
