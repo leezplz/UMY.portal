@@ -189,22 +189,13 @@
         <section id="courses-section" class="content-section hidden">
           <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 border-primary-dark uppercase">Pendaftaran
             Semasa</h3>
-          <ul class="space-y-4">
-            <li class="p-4 bg-white shadow border border-primary-dark/50 flex justify-between items-center classic-box">
-              <div>
-                <p class="font-semibold text-lg text-gray-900">CSC401 - ALGORITMA LANJUTAN</p>
-                <p class="text-sm text-gray-500">DR. ALAN TURING | SELASA & KHAMIS</p>
-              </div>
-              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">AKTIF</span>
-            </li>
-            <li class="p-4 bg-white shadow border border-primary-dark/50 flex justify-between items-center classic-box">
-              <div>
-                <p class="font-semibold text-lg text-gray-900">PHY305 - MEKANIK KUANTUM I</p>
-                <p class="text-sm text-gray-500">PROF. MARIE CURIE | ISNIN & RABU</p>
-              </div>
-              <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 classic-box">AKTIF</span>
-            </li>
-          </ul>
+
+          <!-- No courses message centered -->
+          <div class="flex items-center justify-center min-h-[60vh]">
+            <div class="text-center">
+              <p class="text-2xl font-bold text-gray-500">Tiada Kursus</p>
+            </div>
+          </div>
         </section>
 
         <!-- 3. Student Center Section (Results table still inside) -->
@@ -232,9 +223,46 @@
         <!-- 4. Schedule Section (Initially hidden) -->
         <section id="schedule-section" class="content-section hidden">
           <h3 class="text-2xl font-bold text-gray-800 mb-4 uppercase">Ringkasan Jadual Mingguan</h3>
+
+          <!-- Interactive Calendar Component -->
           <div class="bg-white p-6 shadow border border-primary-dark/50 classic-box">
-            <img src="https://placehold.co/800x400/E0E7FF/3730A3?text=PEMEGANG+TEMPAT+UNTUK+KALENDAR+MINGGUAN"
-              class="w-full classic-box" alt="Pemegang Tempat Jadual Kelas Mingguan">
+
+            <!-- Calendar Header -->
+            <div class="flex items-center justify-between mb-6">
+              <h4 id="calendar-month-year" class="text-xl font-bold text-gray-800"></h4>
+              <div class="flex space-x-2">
+                <button onclick="previousMonth()"
+                  class="px-3 py-1 border border-primary-dark text-primary-dark hover:bg-primary-light transition classic-box font-bold">&larr;</button>
+                <button onclick="nextMonth()"
+                  class="px-3 py-1 border border-primary-dark text-primary-dark hover:bg-primary-light transition classic-box font-bold">&rarr;</button>
+              </div>
+            </div>
+
+            <!-- Days of Week Header -->
+            <div class="grid grid-cols-7 gap-2 mb-2">
+              <div class="text-center font-bold text-sm text-gray-700 p-2">AHD</div>
+              <div class="text-center font-bold text-sm text-gray-700 p-2">ISN</div>
+              <div class="text-center font-bold text-sm text-gray-700 p-2">SEL</div>
+              <div class="text-center font-bold text-sm text-gray-700 p-2">RAB</div>
+              <div class="text-center font-bold text-sm text-gray-700 p-2">KHA</div>
+              <div class="text-center font-bold text-sm text-gray-700 p-2">JUM</div>
+              <div class="text-center font-bold text-sm text-gray-700 p-2">SAB</div>
+            </div>
+
+            <!-- Calendar Grid - dynamically generated -->
+            <div id="calendar-grid" class="grid grid-cols-7 gap-2"></div>
+
+            <!-- Legend -->
+            <div class="mt-6 flex items-center justify-center space-x-6 text-sm">
+              <div class="flex items-center space-x-2">
+                <div class="w-4 h-4 bg-primary-light/50 border-2 border-primary-dark classic-box"></div>
+                <span class="text-gray-700">Hari Ini</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-4 h-4 bg-green-50 border border-gray-200 classic-box"></div>
+                <span class="text-gray-700">Acara</span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -414,7 +442,96 @@
         const sectionId = activeLink.getAttribute('data-section');
         switchSection(activeLink, sectionId);
       }
+
+      // Initialize calendar
+      renderCalendar();
     };
+
+    // --- Calendar JavaScript ---
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    const monthNames = ['JANUARI', 'FEBRUARI', 'MAC', 'APRIL', 'MEI', 'JUN', 'JULAI', 'OGOS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DISEMBER'];
+
+    // Sample events
+    const events = {
+      // '2025-11-20': 'Tugasan',
+      // '2025-12-15': 'Pendaftaran'
+    };
+
+    function renderCalendar() {
+      const monthYearElement = document.getElementById('calendar-month-year');
+      const calendarGrid = document.getElementById('calendar-grid');
+
+      // Set month and year display
+      monthYearElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+      // Clear previous calendar
+      calendarGrid.innerHTML = '';
+
+      // Get first day of month and number of days
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      // Get today's date
+      const today = new Date();
+      const isCurrentMonth = today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+      const todayDate = today.getDate();
+
+      // Add empty cells for days before month starts
+      for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'p-3 text-center text-gray-300 border border-gray-200 classic-box';
+        calendarGrid.appendChild(emptyCell);
+      }
+
+      // Add days of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const hasEvent = events[dateKey];
+        const isToday = isCurrentMonth && day === todayDate;
+
+        const dayCell = document.createElement('div');
+
+        if (isToday) {
+          dayCell.className = 'p-3 text-center border-2 cursor-pointer classic-box';
+          dayCell.style.backgroundColor = 'rgba(55, 48, 163, 0.6)';
+          dayCell.style.borderColor = '#3730A3';
+          dayCell.style.color = 'white';
+          dayCell.innerHTML = `
+            <div class="font-bold">${day}</div>
+          `;
+        } else if (hasEvent) {
+          dayCell.className = 'p-3 text-center border border-gray-200 bg-green-50 hover:bg-green-100 cursor-pointer classic-box';
+          dayCell.innerHTML = `
+            <div class="font-semibold">${day}</div>
+            <div class="text-xs text-green-700 mt-1">${hasEvent}</div>
+          `;
+        } else {
+          dayCell.className = 'p-3 text-center border border-gray-200 hover:bg-primary-light/20 cursor-pointer classic-box';
+          dayCell.innerHTML = `<div class="font-semibold">${day}</div>`;
+        }
+
+        calendarGrid.appendChild(dayCell);
+      }
+    }
+
+    function previousMonth() {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    }
+
+    function nextMonth() {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar();
+    }
 
   </script>
 </body>
